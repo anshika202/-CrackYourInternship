@@ -1,0 +1,44 @@
+vector<vector<int>> fourSum(vector<int>& nums, int target) {
+        
+    
+   vector<vector<int>>r;
+   if(nums.empty())
+   {return r;
+   }
+   
+sort(nums.begin(),nums.end());
+
+set<vector<int>>a;
+
+for(int i=0;i<nums.size();i++)
+{for(int j=i+1;j<nums.size();j++)
+{  int x= target - nums[i]- nums[j];
+
+int s=j+1, e=nums.size()-1;
+
+while(s<e)
+{ int sum= nums[s]+nums[e];
+
+if(sum<x)
+{s++;
+}
+
+else if(sum>x)
+{e--;
+}
+
+else
+{a.insert({nums[i],nums[j],nums[s],nums[e]});
+s++;
+e--;
+}
+}
+}
+}
+
+for(auto k:a)
+{r.push_back(k);
+}
+
+return r;
+}
