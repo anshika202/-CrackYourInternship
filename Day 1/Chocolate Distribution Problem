@@ -1,0 +1,42 @@
+bool is_feasible(int mid, vector<int>&v, int k)
+{ int pos = v[0], ele = 1;
+
+for(int i=0;i<v.size();i++)
+{if(v[i]-pos <=mid)
+{pos = v[i];
+ele ++;
+if(ele == k)
+{return true;
+}
+}
+}
+
+return false;
+}
+
+
+
+int chocolate_distribution(vector<int>&v, int k)
+{if(k>v.size())
+{return -1;
+}
+    
+    sort(v.begin(),v.end());
+
+int left = v[0], right = v[v.size()-1],mid, result =INT_MAX;
+
+while(left<right)
+{ mid = (left+right)/2;
+
+if(is_feasible(mid,v,k))
+{ result = min(result,mid);
+right = mid;
+}
+
+else
+{left = mid+1;
+}
+}
+
+return result;
+}
