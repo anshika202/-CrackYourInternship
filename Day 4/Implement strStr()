@@ -1,0 +1,21 @@
+ int strStr(string haystack, string needle) {
+        if(needle=="")
+ {return 0;
+ }
+ 
+ else if(haystack=="")
+ {return -1;
+ }
+ 
+ int k=needle.length();
+ string s;
+ 
+ for(int i=0;i<haystack.length();i++)
+ {s = haystack.substr(i,k);
+ if(s==needle)
+ {return i;
+ }
+ }
+ 
+ return -1;
+}
